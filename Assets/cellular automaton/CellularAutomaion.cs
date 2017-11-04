@@ -15,7 +15,7 @@ public class CellularAutomaion : MonoBehaviour
     [Range(3, 200)]
     public int SeedIntensity;
 
-    public List<int> serviveNumbers;
+    public List<int> surviveNumbers;
     public List<int> bornNumbers;
 
 
@@ -90,7 +90,7 @@ public class CellularAutomaion : MonoBehaviour
 
 
     // This is the main function
-    // it loops into every cell in gameObjectMap and checks condition for serviving or destroing the block
+    // it loops into every cell in gameObjectMap and checks condition for surviving or destroing the block
     void NextStep()
     {
         for (int j = 0; j < gridSize.x; j++)
@@ -99,7 +99,7 @@ public class CellularAutomaion : MonoBehaviour
             {
                 if (gridMap[j, k])
                 {
-                    if (!ServiveCheck(j, k))
+                    if (!SurviveCheck(j, k))
                     {
                         Destroy(gameObjectMap[j, k]);
                         gameObjectMap[j, k] = Instantiate(emptyGameObject, new Vector3(j, 0, k), block.transform.rotation);
@@ -133,12 +133,12 @@ public class CellularAutomaion : MonoBehaviour
         return false;
     }
 
-    // Checks if this cell should servive or not
-    bool ServiveCheck(int x, int y)
+    // Checks if this cell should survive or not
+    bool SurviveCheck(int x, int y)
     {
-        for (int i = 0; i < serviveNumbers.Count; i++)
+        for (int i = 0; i < surviveNumbers.Count; i++)
         {
-            if (CheckThisCell(x, y) == serviveNumbers[i])
+            if (CheckThisCell(x, y) == surviveNumbers[i])
             {
                 return true;
             }
